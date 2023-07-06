@@ -1,0 +1,58 @@
+---
+title: "Introduction to MNE-Python"
+subtitle: ""
+author: "Clemens Brunner"
+date: 2023-07-11
+format: html
+toc: true
+toc-title: ""
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Introduction
+
+In this workshop, we will analyze EEG data in Python. We will use [MNE-Python](https://mne.tools), which is currently the most popular Python package for EEG/MEG analysis. Using real-world EEG data, we will investigate both induced and evoked activity. Whereas ERD/ERS is used to quantify induced activity in specific frequency bands, we average over epochs to compute event-related potentials (ERPs) to quantify evoked activity. We will learn how to perform both types of analyses with MNE-Python in this workshop. Some experience with Python is useful, but not required to follow along in this workshop, because we will start from scratch and learn how to set up a working Python environment for EEG analysis.
+
+
+## Community resources
+
+- [Documentation](https://mne.tools/stable/index.html)
+- [Community forum](https://mne.discourse.group/)
+- [Repository](https://github.com/mne-tools/mne-python)
+
+
+## Installation
+
+There are dozens of ways to install Python and MNE-Python on your computer. If you are just beginning your journey with MNE-Python, we recommend the [standalone installers](https://mne.tools/stable/install/installers.html), which contain everything you need to get started with analyzing EEG data. In particular, you will get
+
+- a full-fledged Python environment with MNE-Python including all required and optional dependencies,
+- [Spyder](https://www.spyder-ide.org/), an integrated development environment (IDE) tailored towards scientific workflows,
+- and some useful shortcuts (such as a command prompt with an activated MNE-Python environment).
+
+If you are a more experienced Pythonista and would like to customize your MNE-Python installation, we also support [manual installations](https://mne.tools/stable/install/manual_install.html) with `pip` and `conda`.
+
+## Spyder
+
+
+
+
+## Hello world
+
+
+## Importing data
+
+
+## Continuous, epoched, and evoked data
+
+
+## Preprocessing
+
+
+## Removing ocular artifacts with ICA
+
+
