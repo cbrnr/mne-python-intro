@@ -16,7 +16,7 @@ theme:
 
 ## Introduction
 
-In this workshop, we will analyze EEG data in Python. We will use [MNE-Python](https://mne.tools), which is currently the most popular Python package for EEG/MEG analysis. Using real-world EEG data, we will investigate both induced and evoked activity. Whereas ERD/ERS is used to quantify induced activity in specific frequency bands, we average over epochs to compute event-related potentials (ERPs) to quantify evoked activity. We will learn how to perform both types of analyses with MNE-Python in this workshop. Some experience with Python is useful, but not required to follow along in this workshop, because we will start from scratch and learn how to set up a working Python environment for EEG analysis.
+In this workshop, we will analyze EEG data in Python. We will use [MNE-Python](https://mne.tools), which is currently the largest and most popular Python package for EEG/MEG analysis. Using real-world EEG data, we will investigate both induced and evoked activity. Whereas time–frequency analysis is used to quantify induced activity in specific frequency bands, we quantify evoked activity by simply averaging over epochs of EEG data. We will learn how to perform both types of analyses with MNE-Python in this workshop. Some experience with Python is useful, but not required to follow along in this workshop, because we will start from scratch and learn how to set up a working Python environment for EEG analysis.
 
 
 ## Community resources
@@ -34,20 +34,110 @@ There are dozens of ways to install Python and MNE-Python on your computer. If y
 - [Spyder](https://www.spyder-ide.org/), an integrated development environment (IDE) tailored towards scientific workflows,
 - and some useful shortcuts (such as a command prompt with an activated MNE-Python environment).
 
+:::{.callout-note}
 If you are a more experienced Pythonista and would like to customize your MNE-Python installation, we also support [manual installations](https://mne.tools/stable/install/manual_install.html) with `pip` and `conda`.
+:::
+
+Although the standalone installers contain hundreds of useful packages, sometimes you still might want to use a package that is not available out of the box. For example, to import data from [XDF](https://github.com/sccn/xdf/wiki/Specifications) files (a popular file format for biosignal data produced by devices compatible with [LSL](https://labstreaminglayer.org/#/)), we need to use the `pyxdf` package, which is currently not included in the standalone installers. To install additional packages, start the MNE command prompt and enter the following command:
+
+```bash
+mamba install pyxdf
+```
+
+That's it – now you can use the `pyxdf` package in all your projects!
+
 
 ## Spyder
 
+Live Demo
 
 
 
-## Hello world
+## Prerequisites
+
+As with every third-party Python module, you need to import it before you can start using it. Typically, we import the entire base module like this:
+
+```{python}
+import mne
+```
+
+```{python}
+#| echo: false
+mne.set_log_level("ERROR")
+```
+
+However, sometimes it is convenient to only import specific submodules and/or functions, for example:
+
+```{python}
+from mne.io import read_raw
+```
+
+:::{.callout-tip}
+
+:::
+
+
+## Continuous, epoched, and evoked data
+
+Let's introduce some MNE-specific terminology (check out the [glossary](https://mne.tools/stable/glossary.html) for more definitions). The three most important types that represent EEG data are:
+
+- Continuous data is represented by `Raw` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/raw/10_raw_overview.html))
+- Epoched data is represented by `Epochs` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html))
+- Evoked data (averaged epochs) is represented by `Evoked` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/evoked/10_evoked_overview.html))
+
+Another core data type is `Info` (more info – pun intended – is available [here](https://mne.tools/stable/auto_tutorials/intro/30_info.html)), which contains metadata such as sampling frequency and channel properties. All three previously mentioned data types (`Raw`, `Epochs`, and `Evoked`) have associated `Info` attributes (available as `info`, for example `raw.info`, `epochs.info`, and `evoked.info` for objects called `raw`, `epochs`, and `evoked`, respectively).
 
 
 ## Importing data
 
+In the following example, we will use the [EEG motor movement/imagery](https://physionet.org/content/eegmmidb/1.0.0/) data set available on PhysioNet. Let's download one particular file, namely [`S001R04.edf`](https://physionet.org/files/eegmmidb/1.0.0/S001/S001R04.edf?download). In the next section, we'll see that MNE-Python has a built-in importer for this data set, which makes it much easier to download this file (or any file which is part of this data set).
 
-## Continuous, epoched, and evoked data
+:::{.callout-important}
+All examples assume that external data files (such as `S001R04.edf`) are located in the working directory.
+:::
+
+We can now import the data with the previously imported `read_raw()` function:
+
+```{python}
+raw = read_raw("S001R04.edf")
+```
+
+:::{.callout-note}
+Most MNE commands ouput informative messages, which can be quite useful during interactive data exploration. However, if you would like to silence these messages, you can do this with the following command:
+
+```python
+mne.set_log_level("ERROR")
+```
+
+Since the output can be rather verbose, we'll only show messages when they are important for a particular example throughout this document.
+:::
+
+[https://cbrnr.github.io/blog/importing-eeg-data/](https://cbrnr.github.io/blog/importing-eeg-data/)
+
+
+## Using built-in data sets
+
+The `mne.datasets` module provides convenient access to many public data sets (see [this overview](https://mne.tools/stable/overview/datasets_index.html) for a complete list of available data sets). Depending on the data set, use either `data_path()` or `load_data()` to download the entire data set or only a specific subset, respectively. 
+
+For example, let's take a look at the EEG motor movement/imagery we've manually downloaded and imported previously. MNE-Python includes a dedicated importer in `mne.datasets.eegbci`. We can use it to download and import three data files for `S001`, namely runs 4, 8, and 12 (which contain data from a left versus right hand motor imagery task): 
+
+```{python}
+files = mne.datasets.eegbci.load_data(subject=1, runs=[4, 8, 12])
+```
+
+MNE-Python will download and store the requested files in a suitable location and return a list of paths. We can then use this list to actually import the data, for example with a list comprehension:
+
+```{python}
+raws = [read_raw(file) for file in files]
+```
+
+Now `raws` is a list containing three `Raw` objects corresponding to the data from the three files. We can concatenate these objects into a single `Raw` instance, which will make subsequent analyses possible:
+
+```{python}
+raw = mne.concatenate_raws(raws)
+```
+
+
 
 
 ## Preprocessing
