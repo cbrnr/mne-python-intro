@@ -1,6 +1,6 @@
 ---
 title: "Introduction to MNE-Python"
-subtitle: ""
+subtitle: "A short overview of basic EEG processing"
 author: "Clemens Brunner"
 date: 2023-07-11
 format: html
@@ -73,17 +73,23 @@ from mne.io import read_raw
 ```
 
 :::{.callout-tip}
+If you want to check your current MNE-Python environment, run the following command:
 
+```python
+mne.sys_info()
+```
+
+The output is also very useful for developers, so make sure to include it if you report an issue with MNE-Python.
 :::
 
 
 ## Continuous, epoched, and evoked data
 
-Let's introduce some MNE-specific terminology (check out the [glossary](https://mne.tools/stable/glossary.html) for more definitions). The three most important types that represent EEG data are:
+Let's introduce some MNE-specific terminology before we start working on a first example (check out the [glossary](https://mne.tools/stable/glossary.html) for more definitions). There are three different types that represent EEG data:
 
-- Continuous data is represented by `Raw` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/raw/10_raw_overview.html))
-- Epoched data is represented by `Epochs` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html))
-- Evoked data (averaged epochs) is represented by `Evoked` objects ([official tutorial](https://mne.tools/stable/auto_tutorials/evoked/10_evoked_overview.html))
+- `Raw` objects contain *continuous* data ([official tutorial](https://mne.tools/stable/auto_tutorials/raw/10_raw_overview.html))
+- `Epochs` objects contain *epoched* (discontinuous, segmented) data ([official tutorial](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html))
+- `Evoked` objects contain *evoked* data (averaged epochs) ([official tutorial](https://mne.tools/stable/auto_tutorials/evoked/10_evoked_overview.html))
 
 Another core data type is `Info` (more info – pun intended – is available [here](https://mne.tools/stable/auto_tutorials/intro/30_info.html)), which contains metadata such as sampling frequency and channel properties. All three previously mentioned data types (`Raw`, `Epochs`, and `Evoked`) have associated `Info` attributes (available as `info`, for example `raw.info`, `epochs.info`, and `evoked.info` for objects called `raw`, `epochs`, and `evoked`, respectively).
 
@@ -138,11 +144,19 @@ raw = mne.concatenate_raws(raws)
 ```
 
 
-
-
 ## Preprocessing
+
+- Events and annotations
+- Filtering (lowpass, highpass, bandpass, notch)
+- Reference (and re-referencing)
+- Interpolating bad channels
+
+
+## Visualizing continuous and epoched EEG data
+
+- The MNE-Python signal browser
 
 
 ## Removing ocular artifacts with ICA
 
-
+[https://cbrnr.github.io/blog/removing-eog-ica/](https://cbrnr.github.io/blog/removing-eog-ica/)
