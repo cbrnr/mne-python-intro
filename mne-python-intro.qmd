@@ -54,7 +54,6 @@ That's it – now you can use the `pyxdf` package in all your projects!
 ![Main window of Spyder, the scientific Python development environment.](spyder.png){#fig-spyder}
 
 
-
 ## Prerequisites
 
 As with every third-party Python module, you need to import it before you can start using it. Typically, we import the entire base module like this:
@@ -153,10 +152,14 @@ raw = mne.concatenate_raws(raws)
 - Reference (and re-referencing)
 - Interpolating bad channels
 
+[https://github.com/cbrnr/bci-event-2021](https://github.com/cbrnr/bci-event-2021)
+
 
 ## Visualizing continuous and epoched EEG data
 
 - The MNE-Python signal browser
+
+[https://cbrnr.github.io/blog/visualizing-eeg-data/](https://cbrnr.github.io/blog/visualizing-eeg-data/)
 
 
 ## Removing ocular artifacts with ICA
