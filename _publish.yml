@@ -1,0 +1,4 @@
+- source: mne-python-intro.qmd
+  quarto-pub:
+    - id: 33c822d2-6ba6-483d-a52f-cd1999626695
+      url: 'https://cbrnr.quarto.pub/mne-python-intro'
