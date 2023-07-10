@@ -19,6 +19,23 @@ theme:
 In this workshop, we will analyze EEG data in Python. We will use [MNE-Python](https://mne.tools), which is currently the largest and most popular Python package for EEG/MEG analysis. Using real-world EEG data, we will investigate both induced and evoked activity. Whereas time–frequency analysis is used to quantify induced activity in specific frequency bands, we quantify evoked activity by simply averaging over epochs of EEG data. We will learn how to perform both types of analyses with MNE-Python in this workshop. Some experience with Python is useful, but not required to follow along in this workshop, because we will start from scratch and learn how to set up a working Python environment for EEG analysis.
 
 
+## Overview
+
+We will cover the following topics in this workshop:
+
+- Installing and configuring MNE-Python
+- Using a suitable development environment
+- Importing data
+- Metadata
+- Events and annotations
+- Using built-in data sets
+- Renaming channels, re-referencing, assigning montages
+- Filtering, interpolating channels
+- Visualizing continuous data
+- Manual artifact selection
+- Removing ocular artifacts with ICA
+
+
 ## Community resources
 
 - [Documentation](https://mne.tools/stable/index.html)
