@@ -34,6 +34,8 @@ There are dozens of ways to install Python and MNE-Python on your computer. If y
 - [Spyder](https://www.spyder-ide.org/), an integrated development environment (IDE) tailored towards scientific workflows,
 - and some useful shortcuts (such as a command prompt with an activated MNE-Python environment).
 
+![MNE apps installed by the standalone installer.](mne-apps.png){#fig-apps width=80%}
+
 :::{.callout-note}
 If you are a more experienced Pythonista and would like to customize your MNE-Python installation, we also support [manual installations](https://mne.tools/stable/install/manual_install.html) with `pip` and `conda`.
 :::
@@ -49,7 +51,7 @@ That's it – now you can use the `pyxdf` package in all your projects!
 
 ## Spyder
 
-Live Demo
+![Main window of Spyder, the scientific Python development environment.](spyder.png){#fig-spyder}
 
 
 
