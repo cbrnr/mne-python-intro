@@ -162,12 +162,16 @@ raw = mne.concatenate_raws(raws)
 ```
 
 
-## Preprocessing
+## Real-world examples
 
+- Importing XDF
 - Events and annotations
 - Filtering (lowpass, highpass, bandpass, notch)
 - Reference (and re-referencing)
 - Interpolating bad channels
+- Epoching
+- Time–frequency analysis (ERD/ERS)
+- Event-related potential (ERP) analysis
 
 [https://github.com/cbrnr/bci-event-2021](https://github.com/cbrnr/bci-event-2021)
 
