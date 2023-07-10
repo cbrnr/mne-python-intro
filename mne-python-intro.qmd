@@ -162,6 +162,18 @@ raw = mne.concatenate_raws(raws)
 ```
 
 
+## Visualizing continuous and epoched EEG data
+
+- The MNE-Python signal browser
+
+[https://cbrnr.github.io/blog/visualizing-eeg-data/](https://cbrnr.github.io/blog/visualizing-eeg-data/)
+
+
+## Removing ocular artifacts with ICA
+
+[https://cbrnr.github.io/blog/removing-eog-ica/](https://cbrnr.github.io/blog/removing-eog-ica/)
+
+
 ## Real-world examples
 
 - Importing XDF
@@ -174,15 +186,3 @@ raw = mne.concatenate_raws(raws)
 - Event-related potential (ERP) analysis
 
 [https://github.com/cbrnr/bci-event-2021](https://github.com/cbrnr/bci-event-2021)
-
-
-## Visualizing continuous and epoched EEG data
-
-- The MNE-Python signal browser
-
-[https://cbrnr.github.io/blog/visualizing-eeg-data/](https://cbrnr.github.io/blog/visualizing-eeg-data/)
-
-
-## Removing ocular artifacts with ICA
-
-[https://cbrnr.github.io/blog/removing-eog-ica/](https://cbrnr.github.io/blog/removing-eog-ica/)
